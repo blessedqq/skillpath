@@ -107,7 +107,9 @@ html {
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   font-family: var(--font);
-  background: var(--white);
+  background: radial-gradient(circle at 16% 12%, rgba(37,99,235,.12), transparent 16%),
+              radial-gradient(circle at 92% 20%, rgba(59,130,246,.14), transparent 18%),
+              #f8fafc;
   color: var(--grey-900);
   line-height: 1.6;
   overflow-x: hidden;
@@ -122,6 +124,49 @@ ul { list-style: none; }
   margin: 0 auto;
   padding: 0 32px;
 }
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  min-height: 46px;
+  border-radius: 18px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), #60a5fa);
+  box-shadow: 0 18px 40px rgba(37,99,235,.16);
+  transition: var(--transition);
+}
+..icon::before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon.icon--small {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+}
+.icon--frontend { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+.icon--backend { background: linear-gradient(135deg, #1d4ed8, #2563eb); }
+.icon--ai { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+.icon--design { background: linear-gradient(135deg, #db2777, #ec4899); }
+.icon--cloud { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+.icon--marketing { background: linear-gradient(135deg, #f97316, #fb923c); }
+.icon--management { background: linear-gradient(135deg, #0ea5e9, #22d3ee); }
+.icon--soon { background: linear-gradient(135deg, #64748b, #475569); }
+.icon--tab-dev::before { content: 'DEV'; font-size: 0.72rem; letter-spacing: .12em; }
+.icon--tab-design::before { content: 'DSN'; font-size: 0.72rem; letter-spacing: .12em; }
+.icon--tab-data::before { content: 'AI'; font-size: 0.72rem; letter-spacing: .12em; }
+.icon--tab-marketing::before { content: 'MKT'; font-size: 0.72rem; letter-spacing: .12em; }
+.icon--tab-management::before { content: 'MGMT'; font-size: 0.65rem; letter-spacing: .12em; }
+.icon--book::before { content: 'K'; font-size: 0.9rem; }
+.icon--folder::before { content: 'F'; font-size: 0.9rem; }
+.icon--profile::before { content: 'P'; font-size: 0.9rem; }
+.icon--empty::before { content: 'S'; font-size: 1.5rem; font-weight: 800; }
 
 /* ======================================
    BUTTONS
@@ -141,15 +186,16 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 .btn--primary {
-  background: var(--blue);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
   color: var(--white);
-  border-color: var(--blue);
+  border-color: transparent;
+  box-shadow: 0 12px 30px rgba(37,99,235,.18);
 }
 .btn--primary:hover {
-  background: var(--blue-dark);
-  border-color: var(--blue-dark);
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  border-color: transparent;
   transform: translateY(-1px);
-  box-shadow: var(--shadow-blue);
+  box-shadow: 0 16px 36px rgba(37,99,235,.22);
 }
 .btn--ghost {
   background: transparent;
@@ -331,7 +377,9 @@ ul { list-style: none; }
 .hero {
   position: relative;
   min-height: 100vh;
-  background: var(--dark);
+  background: radial-gradient(circle at 16% 18%, rgba(59,130,246,.25), transparent 22%),
+              radial-gradient(circle at 90% 20%, rgba(96,165,250,.18), transparent 20%),
+              linear-gradient(135deg, #0e1726 0%, #111827 38%, #141b2d 100%);
   display: flex;
   align-items: center;
   padding: 120px 32px 80px;
@@ -520,9 +568,12 @@ ul { list-style: none; }
   margin-bottom: 40px;
 }
 .prof-tab {
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--grey-200);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(100,116,139,.18);
   background: var(--white);
   font-family: var(--font);
   font-size: 0.88rem;
@@ -531,12 +582,17 @@ ul { list-style: none; }
   cursor: pointer;
   transition: var(--transition);
 }
+.prof-tab__icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+}
 .prof-tab:hover { border-color: var(--blue); color: var(--blue); }
 .prof-tab.active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
-  box-shadow: var(--shadow-blue);
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(37,99,235,.18);
 }
 
 .prof-panel { display: none; }
@@ -581,7 +637,20 @@ ul { list-style: none; }
   opacity: .6;
   filter: grayscale(.5);
 }
-.prof-card__icon { font-size: 2.4rem; margin-bottom: 16px; }
+.prof-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(37,99,235,.16);
+}
 .prof-card__title {
   font-size: 1.1rem;
   font-weight: 700;
@@ -606,10 +675,18 @@ ul { list-style: none; }
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
-.prof-card__duration::before { content: '🕐'; font-size: .75rem; }
-.prof-card__courses::before { content: '📚'; font-size: .75rem; }
+.prof-card__duration::before,
+.prof-card__courses::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.prof-card__courses::before { background: var(--grey-400); }
 .prof-card__soon-badge {
   position: absolute;
   top: 20px;

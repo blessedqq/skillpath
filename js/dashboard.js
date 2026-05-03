@@ -306,7 +306,7 @@
       } else {
         vmodalPlayer.innerHTML = `
           <div class="vmodal__player-placeholder">
-            <div class="vmodal__player-placeholder-icon">🎬</div>
+            <div class="vmodal__player-placeholder-icon">▶</div>
             <div class="vmodal__player-placeholder-text">Видео недоступно</div>
           </div>`;
       }
