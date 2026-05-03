@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillPath — Онлайн-образование нового уровня</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth-modal.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <span class="nav__logo-icon">SP</span>
+        <span class="nav__logo-text">SkillPath</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#professions" class="nav__link">Профессии</a>
+        <a href="#courses" class="nav__link">Курсы</a>
+        <a href="#about" class="nav__link">О нас</a>
+      </nav>
+      <div class="nav__actions" id="navActions">
+        <!-- Заполняется JS в зависимости от состояния авторизации -->
+        <button class="btn btn--ghost" id="navLoginBtn">Войти</button>
+        <button class="btn btn--primary" id="navRegisterBtn">Начать бесплатно</button>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#professions" class="mobile-menu__link">Профессии</a>
+    <a href="#courses" class="mobile-menu__link">Курсы</a>
+    <a href="#about" class="mobile-menu__link">О нас</a>
+    <button class="btn btn--primary" style="margin-top:1rem;">Начать бесплатно</button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__content">
+      <div class="hero__badge">Новая платформа · 2026</div>
+      <h1 class="hero__title">
+        Освой<br/>
+        <span class="hero__title-accent">профессию</span><br/>
+        будущего
+      </h1>
+      <p class="hero__sub">
+        Практические курсы от экспертов индустрии.<br/>
+        От первого урока до трудоустройства.
+      </p>
+      <div class="hero__cta">
+        <button class="btn btn--primary btn--lg">Выбрать профессию</button>
+        <button class="btn btn--outline btn--lg">Смотреть программы</button>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__card hero__card--1">
+        <div class="hero__card-icon">⚡</div>
+        <div class="hero__card-label">Frontend</div>
+        <div class="hero__card-meta">12 курсов</div>
+      </div>
+      <div class="hero__card hero__card--2">
+        <div class="hero__card-icon">🤖</div>
+        <div class="hero__card-label">AI / ML</div>
+        <div class="hero__card-meta">8 курсов</div>
+      </div>
+      <div class="hero__card hero__card--3">
+        <div class="hero__card-icon">🎨</div>
+        <div class="hero__card-label">Design</div>
+        <div class="hero__card-meta">10 курсов</div>
+      </div>
+      <div class="hero__card hero__card--4">
+        <div class="hero__card-icon">☁️</div>
+        <div class="hero__card-label">DevOps</div>
+        <div class="hero__card-meta">6 курсов</div>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-num">40+</span>
+          <span class="hero__stat-lbl">профессий</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">120k</span>
+          <span class="hero__stat-lbl">студентов</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">87%</span>
+          <span class="hero__stat-lbl">трудоустроены</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>Прокрути вниз</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- BRIDGE: dark → light -->
+  <div class="bridge bridge--hero" aria-hidden="true"></div>
+
+  <!-- PROFESSIONS SELECTOR -->
+  <section class="professions" id="professions">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Направления</div>
+        <h2 class="section-title">Выбери профессию</h2>
+        <p class="section-sub">Каждое направление — это полноценная программа обучения с наставником и поддержкой до трудоустройства</p>
+      </div>
+
+      <div class="prof-tabs" id="profTabs">
+        <button class="prof-tab active" data-target="it">💻 IT &amp; Разработка</button>
+        <button class="prof-tab" data-target="design">🎨 Дизайн</button>
+        <button class="prof-tab" data-target="data">📊 Data &amp; AI</button>
+        <button class="prof-tab" data-target="marketing">📣 Маркетинг</button>
+        <button class="prof-tab" data-target="management">📋 Управление</button>
+      </div>
+
+      <!-- IT -->
+      <div class="prof-panel active" id="panel-it">
+        <div class="prof-grid">
+          <div class="prof-card" data-profession="frontend">
+            <div class="prof-card__icon">⚡</div>
+            <h3 class="prof-card__title">Frontend-разработчик</h3>
+            <p class="prof-card__desc">HTML, CSS, JavaScript, React — создавай интерфейсы, которыми пользуются миллионы</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">14 месяцев</span>
+              <span class="prof-card__courses">12 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="backend">
+            <div class="prof-card__icon">🔧</div>
+            <h3 class="prof-card__title">Backend-разработчик</h3>
+            <p class="prof-card__desc">Java, Python, Node.js — стань архитектором серверной части современных приложений</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">16 месяцев</span>
+              <span class="prof-card__courses">15 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="fullstack">
+            <div class="prof-card__icon">🚀</div>
+            <h3 class="prof-card__title">Fullstack-разработчик</h3>
+            <p class="prof-card__desc">Полный стек технологий: от базы данных до готового продукта</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">24 месяца</span>
+              <span class="prof-card__courses">22 курса</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="mobile">
+            <div class="prof-card__icon">📱</div>
+            <h3 class="prof-card__title">Мобильный разработчик</h3>
+            <p class="prof-card__desc">iOS и Android приложения с нуля до публикации в сторах</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">18 месяцев</span>
+              <span class="prof-card__courses">14 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="devops">
+            <div class="prof-card__icon">☁️</div>
+            <h3 class="prof-card__title">DevOps-инженер</h3>
+            <p class="prof-card__desc">Docker, Kubernetes, CI/CD — автоматизируй разработку и деплой</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">12 месяцев</span>
+              <span class="prof-card__courses">10 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card prof-card--soon">
+            <div class="prof-card__icon">🔒</div>
+            <h3 class="prof-card__title">Кибербезопасность</h3>
+            <p class="prof-card__desc">Защита систем, этичный хакинг, пентестинг и анализ угроз</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">15 месяцев</span>
+              <span class="prof-card__courses">11 курсов</span>
+            </div>
+            <div class="prof-card__soon-badge">Скоро</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design -->
+      <div class="prof-panel" id="panel-design">
+        <div class="prof-grid">
+          <div class="prof-card" data-profession="ux">
+            <div class="prof-card__icon">🎨</div>
+            <h3 class="prof-card__title">UX/UI Дизайнер</h3>
+            <p class="prof-card__desc">Figma, Sketch, прототипирование — проектируй интерфейсы с пользой для людей</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">12 месяцев</span>
+              <span class="prof-card__courses">10 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="graphic">
+            <div class="prof-card__icon">✏️</div>
+            <h3 class="prof-card__title">Графический дизайнер</h3>
+            <p class="prof-card__desc">Adobe Suite, брендинг, айдентика — визуальные решения для бизнеса</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">10 месяцев</span>
+              <span class="prof-card__courses">8 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="motion">
+            <div class="prof-card__icon">🎬</div>
+            <h3 class="prof-card__title">Motion-дизайнер</h3>
+            <p class="prof-card__desc">After Effects, анимация, видеографика — оживи статичный контент</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">8 месяцев</span>
+              <span class="prof-card__courses">7 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data -->
+      <div class="prof-panel" id="panel-data">
+        <div class="prof-grid">
+          <div class="prof-card" data-profession="ds">
+            <div class="prof-card__icon">📊</div>
+            <h3 class="prof-card__title">Data Scientist</h3>
+            <p class="prof-card__desc">Python, машинное обучение, нейросети — анализируй данные и строй модели</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">18 месяцев</span>
+              <span class="prof-card__courses">16 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="ml">
+            <div class="prof-card__icon">🤖</div>
+            <h3 class="prof-card__title">ML-инженер</h3>
+            <p class="prof-card__desc">TensorFlow, PyTorch, MLOps — создавай и деплой ML-модели в продакшн</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">20 месяцев</span>
+              <span class="prof-card__courses">14 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="analyst">
+            <div class="prof-card__icon">🔍</div>
+            <h3 class="prof-card__title">Аналитик данных</h3>
+            <p class="prof-card__desc">SQL, Python, Tableau — превращай сырые данные в бизнес-инсайты</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">10 месяцев</span>
+              <span class="prof-card__courses">9 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marketing -->
+      <div class="prof-panel" id="panel-marketing">
+        <div class="prof-grid">
+          <div class="prof-card" data-profession="smm">
+            <div class="prof-card__icon">📣</div>
+            <h3 class="prof-card__title">SMM-менеджер</h3>
+            <p class="prof-card__desc">Контент-стратегия, таргетинг, аналитика — продвигай бренды в соцсетях</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">6 месяцев</span>
+              <span class="prof-card__courses">6 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="seo">
+            <div class="prof-card__icon">🔎</div>
+            <h3 class="prof-card__title">SEO-специалист</h3>
+            <p class="prof-card__desc">Оптимизация сайтов, семантика, ссылочное продвижение</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">8 месяцев</span>
+              <span class="prof-card__courses">7 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Management -->
+      <div class="prof-panel" id="panel-management">
+        <div class="prof-grid">
+          <div class="prof-card" data-profession="pm">
+            <div class="prof-card__icon">📋</div>
+            <h3 class="prof-card__title">Product Manager</h3>
+            <p class="prof-card__desc">Agile, Scrum, стратегия продукта — управляй командой и выстраивай процессы</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">10 месяцев</span>
+              <span class="prof-card__courses">9 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+          <div class="prof-card" data-profession="tl">
+            <div class="prof-card__icon">👥</div>
+            <h3 class="prof-card__title">Тимлид</h3>
+            <p class="prof-card__desc">Лидерство, найм, техническая экспертиза — вырасти из разработчика в руководителя</p>
+            <div class="prof-card__meta">
+              <span class="prof-card__duration">6 месяцев</span>
+              <span class="prof-card__courses">5 курсов</span>
+            </div>
+            <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIDGE: professions → courses -->
+  <div class="bridge bridge--prof" aria-hidden="true"></div>
+
+  <!-- FEATURED COURSES -->
+  <section class="courses" id="courses">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Популярное</div>
+        <h2 class="section-title">Курсы по направлениям</h2>
+        <p class="section-sub">Отдельные курсы для тех, кто хочет освоить конкретную технологию или навык</p>
+      </div>
+
+      <div class="courses-filter" id="coursesFilter">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="dev">Разработка</button>
+        <button class="filter-btn" data-filter="design">Дизайн</button>
+        <button class="filter-btn" data-filter="data">Data</button>
+        <button class="filter-btn" data-filter="soft">Soft Skills</button>
+      </div>
+
+      <!-- Скелетон пока курсы грузятся -->
+      <div class="courses-grid" id="coursesGrid">
+        <div class="course-skeleton"></div>
+        <div class="course-skeleton"></div>
+        <div class="course-skeleton"></div>
+        <div class="course-skeleton"></div>
+        <div class="course-skeleton"></div>
+        <div class="course-skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSE PREVIEW MODAL -->
+  <div class="cpm" id="cpm" role="dialog" aria-modal="true">
+    <div class="cpm__overlay" id="cpmOverlay"></div>
+    <div class="cpm__box">
+      <!-- Top bar -->
+      <div class="cpm__topbar">
+        <span class="cpm__channel" id="cpmChannel"></span>
+        <button class="cpm__close" id="cpmClose" aria-label="Закрыть">✕</button>
+      </div>
+      <!-- Video player: полный плейлист / одно видео -->
+      <div class="cpm__player" id="cpmPlayer"></div>
+      <!-- Info -->
+      <div class="cpm__body">
+        <h2 class="cpm__title" id="cpmTitle"></h2>
+        <p class="cpm__desc" id="cpmDesc"></p>
+        <div class="cpm__chips" id="cpmChips"></div>
+        <div class="cpm__meta" id="cpmMeta"></div>
+        <div class="cpm__actions">
+          <button class="btn btn--primary" id="cpmEnroll">Записаться на курс</button>
+          <a class="btn btn--ghost" id="cpmYtLink" href="#" target="_blank" rel="noopener">
+            Открыть на YouTube ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRIDGE: courses → about -->
+  <div class="bridge bridge--courses" aria-hidden="true"></div>
+
+  <!-- ABOUT / VALUES -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text">
+          <div class="section-tag">О платформе</div>
+          <h2 class="section-title">Почему SkillPath?</h2>
+          <p class="about__desc">Мы строим образование вокруг результата — реального трудоустройства, а не просто сертификата. Каждая программа разработана совместно с компаниями-партнёрами.</p>
+          <ul class="about__list">
+            <li class="about__item about__item--link" data-scroll="professions" tabindex="0" role="button" aria-label="Перейти к практическим курсам">
+              <div class="about__item-icon">🎯</div>
+              <div>
+                <strong>Практический подход</strong>
+                <p>Реальные проекты для портфолио с первого месяца обучения</p>
+                <span class="about__item-arrow">Смотреть курсы →</span>
+              </div>
+            </li>
+            <li class="about__item about__item--link" data-open-auth="register" tabindex="0" role="button" aria-label="Зарегистрироваться и получить наставника">
+              <div class="about__item-icon">🧑‍🏫</div>
+              <div>
+                <strong>Наставник на каждом шагу</strong>
+                <p>Персональный ментор из индустрии отвечает на вопросы 24/7</p>
+                <span class="about__item-arrow">Найти наставника →</span>
+              </div>
+            </li>
+            <li class="about__item about__item--link" data-open-auth="register" tabindex="0" role="button" aria-label="Перейти в карьерный центр">
+              <div class="about__item-icon">💼</div>
+              <div>
+                <strong>Карьерный центр</strong>
+                <p>Помощь с резюме, мок-интервью и прямой выход на HR партнёров</p>
+                <span class="about__item-arrow">Начать карьеру →</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="about__visual">
+          <a href="dashboard.html" class="about__metric-card about__metric-card--link">
+            <span class="about__metric-num">87%</span>
+            <span class="about__metric-lbl">студентов находят работу в течение 3 месяцев после завершения курса</span>
+            <span class="about__metric-cta">Войти в личный кабинет →</span>
+          </a>
+          <div class="about__metric-card about__metric-card--dark" style="cursor:default">
+            <span class="about__metric-num">4.9★</span>
+            <span class="about__metric-lbl">средняя оценка курсов по отзывам студентов</span>
+          </div>
+          <a href="#courses" class="about__metric-card about__metric-card--link">
+            <span class="about__metric-num">120k+</span>
+            <span class="about__metric-lbl">учеников по всему миру уже обучаются на платформе</span>
+            <span class="about__metric-cta">Присоединиться →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIDGE: about → footer -->
+  <div class="bridge bridge--about" aria-hidden="true"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#" class="nav__logo">
+            <span class="nav__logo-icon">SP</span>
+            <span class="nav__logo-text">SkillPath</span>
+          </a>
+          <p class="footer__tagline">Учись. Практикуй. Работай.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <div class="footer__col-title">Обучение</div>
+            <a href="#">Все профессии</a>
+            <a href="#">Отдельные курсы</a>
+            <a href="#">Корпоративное обучение</a>
+          </div>
+          <div class="footer__col">
+            <div class="footer__col-title">Компания</div>
+            <a href="#">О нас</a>
+            <a href="#">Партнёрам</a>
+            <a href="#">Вакансии</a>
+          </div>
+          <div class="footer__col">
+            <div class="footer__col-title">Поддержка</div>
+            <a href="#">Помощь</a>
+            <a href="#">Связаться с нами</a>
+            <a href="#">Политика конфиденциальности</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 SkillPath. Все права защищены.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- AUTH MODAL -->
+  <div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-label="Авторизация">
+    <div class="auth-modal__overlay" id="authOverlay"></div>
+    <div class="auth-modal__box">
+      <button class="auth-modal__close" id="authClose" aria-label="Закрыть">✕</button>
+
+      <!-- Tabs -->
+      <div class="auth-modal__tabs">
+        <button class="auth-tab active" id="tabLogin" data-tab="login">Войти</button>
+        <button class="auth-tab" id="tabRegister" data-tab="register">Регистрация</button>
+      </div>
+
+      <!-- Login form -->
+      <form class="auth-form" id="loginForm">
+        <div class="auth-form__title">Добро пожаловать 👋</div>
+        <div class="auth-field">
+          <label class="auth-field__label">Email</label>
+          <input class="auth-field__input" type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-field__label">Пароль</label>
+          <input class="auth-field__input" type="password" id="loginPassword" placeholder="Минимум 6 символов" required autocomplete="current-password" />
+        </div>
+        <div class="auth-error" id="loginError"></div>
+        <button class="btn btn--primary" type="submit" id="loginSubmit" style="width:100%">Войти</button>
+        <p class="auth-switch">Нет аккаунта? <a href="#" class="auth-switch__link" data-tab="register">Зарегистрироваться</a></p>
+      </form>
+
+      <!-- Register form -->
+      <form class="auth-form auth-form--hidden" id="registerForm">
+        <div class="auth-form__title">Создай аккаунт 🚀</div>
+        <div class="auth-field">
+          <label class="auth-field__label">Имя</label>
+          <input class="auth-field__input" type="text" id="regName" placeholder="Твоё имя" required autocomplete="name" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-field__label">Email</label>
+          <input class="auth-field__input" type="email" id="regEmail" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-field__label">Пароль</label>
+          <input class="auth-field__input" type="password" id="regPassword" placeholder="Минимум 6 символов" required autocomplete="new-password" />
+        </div>
+        <div class="auth-error" id="registerError"></div>
+        <button class="btn btn--primary" type="submit" id="registerSubmit" style="width:100%">Создать аккаунт</button>
+        <p class="auth-switch">Уже есть аккаунт? <a href="#" class="auth-switch__link" data-tab="login">Войти</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

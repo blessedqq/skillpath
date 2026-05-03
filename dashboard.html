@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillPath — Личный кабинет</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body class="dash-body">
+
+  <!-- NAV -->
+  <header class="nav nav--light" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-icon">SP</span>
+        <span class="nav__logo-text" style="color:var(--grey-900)">SkillPath</span>
+      </a>
+      <nav class="dash-nav-links">
+        <a href="#" class="dash-nav-link active" data-section="my-courses">Мои курсы</a>
+        <a href="#" class="dash-nav-link" data-section="catalog">Каталог</a>
+        <a href="#" class="dash-nav-link" data-section="profile">Профиль</a>
+      </nav>
+      <div class="nav-user-pill" id="navUserPill" style="cursor:default">
+        <div class="nav-user-avatar" id="navAvatar">?</div>
+        <span class="nav-user-name" id="navName">...</span>
+        <button class="btn btn--ghost btn--sm" id="logoutBtn" style="color:var(--grey-600);padding:4px 10px">Выйти</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="dash-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar__user">
+        <div class="dash-sidebar__avatar" id="sideAvatar">?</div>
+        <div class="dash-sidebar__info">
+          <div class="dash-sidebar__name" id="sideName">Загрузка...</div>
+          <div class="dash-sidebar__role">Студент</div>
+        </div>
+      </div>
+      <nav class="dash-sidebar__nav">
+        <button class="dash-sidebar__link active" data-section="my-courses"><span>📖</span> Мои курсы <span class="dash-sidebar__badge" id="enrolledBadge">0</span></button>
+        <button class="dash-sidebar__link" data-section="catalog"><span>🗂️</span> Каталог</button>
+        <button class="dash-sidebar__link" data-section="profile"><span>👤</span> Профиль</button>
+      </nav>
+      <div class="dash-sidebar__stats">
+        <div class="dash-stat"><div class="dash-stat__num" id="statCourses">0</div><div class="dash-stat__lbl">курсов</div></div>
+        <div class="dash-stat"><div class="dash-stat__num" id="statAvgProgress">0%</div><div class="dash-stat__lbl">прогресс</div></div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+
+      <!-- МОИ КУРСЫ -->
+      <section class="dash-section" id="section-my-courses">
+        <div class="dash-section__hd">
+          <h1 class="dash-section__title">Мои курсы</h1>
+          <button class="btn btn--primary btn--sm" id="goCatalogBtn">+ Добавить курс</button>
+        </div>
+        <div id="enrolledEmpty" class="dash-empty" style="display:none">
+          <div class="dash-empty__icon">🎓</div>
+          <p class="dash-empty__text">Вы ещё не записаны ни на один курс</p>
+          <button class="btn btn--primary" id="goCatalogBtn2">Перейти в каталог</button>
+        </div>
+        <div class="dash-courses-grid" id="enrolledGrid"></div>
+      </section>
+
+      <!-- КАТАЛОГ -->
+      <section class="dash-section" id="section-catalog" style="display:none">
+        <div class="dash-section__hd">
+          <h1 class="dash-section__title">Каталог курсов</h1>
+        </div>
+        <div class="dash-filter-row" id="catalogFilter">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="dev">Разработка</button>
+          <button class="filter-btn" data-filter="design">Дизайн</button>
+          <button class="filter-btn" data-filter="data">Data / AI</button>
+          <button class="filter-btn" data-filter="soft">Soft Skills</button>
+        </div>
+        <div class="dash-courses-grid" id="catalogGrid"></div>
+      </section>
+
+      <!-- ПРОФИЛЬ -->
+      <section class="dash-section" id="section-profile" style="display:none">
+        <div class="dash-section__hd">
+          <h1 class="dash-section__title">Профиль</h1>
+        </div>
+        <div class="profile-card">
+          <div class="profile-card__avatar" id="profileAvatar">?</div>
+          <div class="profile-card__body">
+            <form class="profile-form" id="profileForm">
+              <div class="auth-field">
+                <label class="auth-field__label">Имя</label>
+                <input class="auth-field__input" type="text" id="profileName" placeholder="Ваше имя" />
+              </div>
+              <div class="auth-field">
+                <label class="auth-field__label">Email</label>
+                <input class="auth-field__input" type="email" id="profileEmail" disabled style="opacity:.5" />
+              </div>
+              <button class="btn btn--primary" type="submit">Сохранить</button>
+              <p class="profile-form__msg" id="profileMsg"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- VIDEO MODAL -->
+  <div class="vmodal" id="vmodal" role="dialog" aria-modal="true">
+    <div class="vmodal__overlay" id="vmodalOverlay"></div>
+    <div class="vmodal__box">
+      <div class="vmodal__topbar">
+        <span class="vmodal__channel" id="vmodalChannel"></span>
+        <button class="vmodal__close" id="vmodalClose">✕</button>
+      </div>
+      <div class="vmodal__player" id="vmodalPlayer"></div>
+      <div class="vmodal__body">
+        <h2 class="vmodal__title" id="vmodalTitle">Загрузка...</h2>
+        <p class="vmodal__desc" id="vmodalDesc"></p>
+        <div class="vmodal__chips" id="vmodalChips"></div>
+        <div class="vmodal__progress-block" id="vmodalProgressBlock" style="display:none">
+          <div class="vmodal__progress-label"><span>Мой прогресс</span><span id="vmodalPct">0%</span></div>
+          <div class="vmodal__progress-track"><div class="vmodal__progress-fill" id="vmodalFill" style="width:0%"></div></div>
+          <div class="vmodal__progress-controls">
+            <input type="range" class="vmodal__range" id="vmodalRange" min="0" max="100" value="0" />
+            <button class="btn btn--primary btn--sm" id="vmodalSave">Сохранить</button>
+          </div>
+        </div>
+        <div class="vmodal__actions" id="vmodalActions"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
