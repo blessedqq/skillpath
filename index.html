@@ -63,22 +63,22 @@
     </div>
     <div class="hero__visual">
       <div class="hero__card hero__card--1">
-        <div class="hero__card-icon">⚡</div>
+        <div class="hero__card-icon icon icon--frontend">&lt;/&gt;</div>
         <div class="hero__card-label">Frontend</div>
         <div class="hero__card-meta">12 курсов</div>
       </div>
       <div class="hero__card hero__card--2">
-        <div class="hero__card-icon">🤖</div>
+        <div class="hero__card-icon icon icon--ai">AI</div>
         <div class="hero__card-label">AI / ML</div>
         <div class="hero__card-meta">8 курсов</div>
       </div>
       <div class="hero__card hero__card--3">
-        <div class="hero__card-icon">🎨</div>
+        <div class="hero__card-icon icon icon--design">DX</div>
         <div class="hero__card-label">Design</div>
         <div class="hero__card-meta">10 курсов</div>
       </div>
       <div class="hero__card hero__card--4">
-        <div class="hero__card-icon">☁️</div>
+        <div class="hero__card-icon icon icon--cloud">SYS</div>
         <div class="hero__card-label">DevOps</div>
         <div class="hero__card-meta">6 курсов</div>
       </div>
@@ -116,18 +116,18 @@
       </div>
 
       <div class="prof-tabs" id="profTabs">
-        <button class="prof-tab active" data-target="it">💻 IT &amp; Разработка</button>
-        <button class="prof-tab" data-target="design">🎨 Дизайн</button>
-        <button class="prof-tab" data-target="data">📊 Data &amp; AI</button>
-        <button class="prof-tab" data-target="marketing">📣 Маркетинг</button>
-        <button class="prof-tab" data-target="management">📋 Управление</button>
+        <button class="prof-tab active" data-target="it"><span class="prof-tab__icon icon icon--tab-dev"></span>IT &amp; Разработка</button>
+        <button class="prof-tab" data-target="design"><span class="prof-tab__icon icon icon--tab-design"></span>Дизайн</button>
+        <button class="prof-tab" data-target="data"><span class="prof-tab__icon icon icon--tab-data"></span>Data &amp; AI</button>
+        <button class="prof-tab" data-target="marketing"><span class="prof-tab__icon icon icon--tab-marketing"></span>Маркетинг</button>
+        <button class="prof-tab" data-target="management"><span class="prof-tab__icon icon icon--tab-management"></span>Управление</button>
       </div>
 
       <!-- IT -->
       <div class="prof-panel active" id="panel-it">
         <div class="prof-grid">
           <div class="prof-card" data-profession="frontend">
-            <div class="prof-card__icon">⚡</div>
+            <div class="prof-card__icon icon icon--frontend">&lt;/&gt;</div>
             <h3 class="prof-card__title">Frontend-разработчик</h3>
             <p class="prof-card__desc">HTML, CSS, JavaScript, React — создавай интерфейсы, которыми пользуются миллионы</p>
             <div class="prof-card__meta">
@@ -137,7 +137,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="backend">
-            <div class="prof-card__icon">🔧</div>
+            <div class="prof-card__icon icon icon--backend">B</div>
             <h3 class="prof-card__title">Backend-разработчик</h3>
             <p class="prof-card__desc">Java, Python, Node.js — стань архитектором серверной части современных приложений</p>
             <div class="prof-card__meta">
@@ -147,7 +147,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="fullstack">
-            <div class="prof-card__icon">🚀</div>
+            <div class="prof-card__icon icon icon--backend">FS</div>
             <h3 class="prof-card__title">Fullstack-разработчик</h3>
             <p class="prof-card__desc">Полный стек технологий: от базы данных до готового продукта</p>
             <div class="prof-card__meta">
@@ -157,7 +157,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="mobile">
-            <div class="prof-card__icon">📱</div>
+            <div class="prof-card__icon icon icon--cloud">MB</div>
             <h3 class="prof-card__title">Мобильный разработчик</h3>
             <p class="prof-card__desc">iOS и Android приложения с нуля до публикации в сторах</p>
             <div class="prof-card__meta">
@@ -167,7 +167,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="devops">
-            <div class="prof-card__icon">☁️</div>
+            <div class="prof-card__icon icon icon--cloud">OPS</div>
             <h3 class="prof-card__title">DevOps-инженер</h3>
             <p class="prof-card__desc">Docker, Kubernetes, CI/CD — автоматизируй разработку и деплой</p>
             <div class="prof-card__meta">
@@ -177,7 +177,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card prof-card--soon">
-            <div class="prof-card__icon">🔒</div>
+            <div class="prof-card__icon icon icon--soon">SO</div>
             <h3 class="prof-card__title">Кибербезопасность</h3>
             <p class="prof-card__desc">Защита систем, этичный хакинг, пентестинг и анализ угроз</p>
             <div class="prof-card__meta">
@@ -193,7 +193,7 @@
       <div class="prof-panel" id="panel-design">
         <div class="prof-grid">
           <div class="prof-card" data-profession="ux">
-            <div class="prof-card__icon">🎨</div>
+            <div class="prof-card__icon icon icon--design">UX</div>
             <h3 class="prof-card__title">UX/UI Дизайнер</h3>
             <p class="prof-card__desc">Figma, Sketch, прототипирование — проектируй интерфейсы с пользой для людей</p>
             <div class="prof-card__meta">
@@ -203,7 +203,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="graphic">
-            <div class="prof-card__icon">✏️</div>
+            <div class="prof-card__icon icon icon--design">GR</div>
             <h3 class="prof-card__title">Графический дизайнер</h3>
             <p class="prof-card__desc">Adobe Suite, брендинг, айдентика — визуальные решения для бизнеса</p>
             <div class="prof-card__meta">
@@ -213,7 +213,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="motion">
-            <div class="prof-card__icon">🎬</div>
+            <div class="prof-card__icon icon icon--design">MO</div>
             <h3 class="prof-card__title">Motion-дизайнер</h3>
             <p class="prof-card__desc">After Effects, анимация, видеографика — оживи статичный контент</p>
             <div class="prof-card__meta">
@@ -229,7 +229,7 @@
       <div class="prof-panel" id="panel-data">
         <div class="prof-grid">
           <div class="prof-card" data-profession="ds">
-            <div class="prof-card__icon">📊</div>
+            <div class="prof-card__icon icon icon--ai">DS</div>
             <h3 class="prof-card__title">Data Scientist</h3>
             <p class="prof-card__desc">Python, машинное обучение, нейросети — анализируй данные и строй модели</p>
             <div class="prof-card__meta">
@@ -239,7 +239,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="ml">
-            <div class="prof-card__icon">🤖</div>
+            <div class="prof-card__icon icon icon--ai">ML</div>
             <h3 class="prof-card__title">ML-инженер</h3>
             <p class="prof-card__desc">TensorFlow, PyTorch, MLOps — создавай и деплой ML-модели в продакшн</p>
             <div class="prof-card__meta">
@@ -249,7 +249,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="analyst">
-            <div class="prof-card__icon">🔍</div>
+            <div class="prof-card__icon icon icon--ai">AN</div>
             <h3 class="prof-card__title">Аналитик данных</h3>
             <p class="prof-card__desc">SQL, Python, Tableau — превращай сырые данные в бизнес-инсайты</p>
             <div class="prof-card__meta">
@@ -265,7 +265,7 @@
       <div class="prof-panel" id="panel-marketing">
         <div class="prof-grid">
           <div class="prof-card" data-profession="smm">
-            <div class="prof-card__icon">📣</div>
+            <div class="prof-card__icon icon icon--marketing">SM</div>
             <h3 class="prof-card__title">SMM-менеджер</h3>
             <p class="prof-card__desc">Контент-стратегия, таргетинг, аналитика — продвигай бренды в соцсетях</p>
             <div class="prof-card__meta">
@@ -275,7 +275,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="seo">
-            <div class="prof-card__icon">🔎</div>
+            <div class="prof-card__icon icon icon--marketing">SEO</div>
             <h3 class="prof-card__title">SEO-специалист</h3>
             <p class="prof-card__desc">Оптимизация сайтов, семантика, ссылочное продвижение</p>
             <div class="prof-card__meta">
@@ -291,7 +291,7 @@
       <div class="prof-panel" id="panel-management">
         <div class="prof-grid">
           <div class="prof-card" data-profession="pm">
-            <div class="prof-card__icon">📋</div>
+            <div class="prof-card__icon icon icon--management">PM</div>
             <h3 class="prof-card__title">Product Manager</h3>
             <p class="prof-card__desc">Agile, Scrum, стратегия продукта — управляй командой и выстраивай процессы</p>
             <div class="prof-card__meta">
@@ -301,7 +301,7 @@
             <button class="btn btn--primary btn--sm prof-card__btn">Подробнее</button>
           </div>
           <div class="prof-card" data-profession="tl">
-            <div class="prof-card__icon">👥</div>
+            <div class="prof-card__icon icon icon--management">TL</div>
             <h3 class="prof-card__title">Тимлид</h3>
             <p class="prof-card__desc">Лидерство, найм, техническая экспертиза — вырасти из разработчика в руководителя</p>
             <div class="prof-card__meta">
@@ -488,7 +488,7 @@
 
       <!-- Login form -->
       <form class="auth-form" id="loginForm">
-        <div class="auth-form__title">Добро пожаловать 👋</div>
+        <div class="auth-form__title">Добро пожаловать</div>
         <div class="auth-field">
           <label class="auth-field__label">Email</label>
           <input class="auth-field__input" type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
@@ -504,7 +504,7 @@
 
       <!-- Register form -->
       <form class="auth-form auth-form--hidden" id="registerForm">
-        <div class="auth-form__title">Создай аккаунт 🚀</div>
+        <div class="auth-form__title">Создай аккаунт</div>
         <div class="auth-field">
           <label class="auth-field__label">Имя</label>
           <input class="auth-field__input" type="text" id="regName" placeholder="Твоё имя" required autocomplete="name" />
