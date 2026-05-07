@@ -4,7 +4,6 @@ const jwt       = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 const rateLimit = require('express-rate-limit');
 const User      = require('../models/User');
-const { getClient } = require('../db/redis');
 
 // Жёсткий лимит на auth-эндпоинты
 const authLimiter = rateLimit({
@@ -68,11 +67,6 @@ router.post('/login', authLimiter, [
 const authenticate = require('../middleware/authenticate');
 router.post('/logout', authenticate, async (req, res, next) => {
   try {
-    const token  = req.headers['authorization'].slice(7);
-    const redis  = getClient();
-    // Кладём токен в блэклист до истечения его TTL
-    const ttl    = req.user.exp - Math.floor(Date.now() / 1000);
-    if (ttl > 0) await redis.setex(`bl:${token}`, ttl, '1');
     res.json({ message: 'Выход выполнен' });
   } catch (err) { next(err); }
 });

@@ -8,7 +8,6 @@ const morgan     = require('morgan');
 const rateLimit  = require('express-rate-limit');
 
 const connectMongo = require('./db/mongo');
-const connectRedis = require('./db/redis');
 
 const authRoutes    = require('./routes/auth');
 const courseRoutes  = require('./routes/courses');
@@ -58,6 +57,5 @@ app.use((err, _req, res, _next) => {
 // ── Boot ──────────────────────────────────────────────────────
 (async () => {
   await connectMongo();
-  await connectRedis();
   app.listen(PORT, () => console.log(`[SkillPath API] Listening on :${PORT}`));
 })();

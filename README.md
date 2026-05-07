@@ -1,6 +1,6 @@
 # SkillPath — Онлайн-платформа для обучения
 
-Образовательная платформа в стиле Skillbox, построенная на чистом HTML/CSS/JS c Node.js-бэкендом, MongoDB и Redis в Docker.
+Простая образовательная платформа, построенная на чистом HTML/CSS/JS с Node.js-бэкендом и MongoDB. Оптимизирована для бесплатного деплоя на Render.
 
 ---
 
@@ -10,10 +10,9 @@
 |---|---|
 | Frontend | HTML5, CSS3, Vanilla JS (без фреймворков) |
 | Backend | Node.js 20 + Express 4 |
-| База данных | MongoDB 7 (Mongoose) |
-| Кэш / сессии | Redis 7 (ioredis) |
-| Аутентификация | JWT (HS256, 7 дней) + Redis blacklist |
-| Контейнеризация | Docker + Docker Compose |
+| База данных | MongoDB Atlas (Mongoose) |
+| Аутентификация | JWT (HS256, 7 дней) |
+| Контейнеризация | Docker |
 | Шрифт | Inter (Google Fonts) |
 
 ---
@@ -25,8 +24,7 @@ gradleProject/
 ├── backend/
 │   ├── src/
 │   │   ├── db/
-│   │   │   ├── mongo.js          # Подключение к MongoDB
-│   │   │   └── redis.js          # Подключение к Redis
+│   │   │   └── mongo.js          # Подключение к MongoDB
 │   │   ├── middleware/
 │   │   │   └── authenticate.js   # JWT middleware
 │   │   ├── models/
@@ -38,7 +36,6 @@ gradleProject/
 │   │   │   └── users.js          # /api/users/*
 │   │   └── server.js             # Express приложение
 │   ├── mongo-init.js             # Seed-скрипт (при первом запуске)
-│   ├── Dockerfile
 │   └── package.json
 ├── css/
 │   ├── style.css                 # Глобальные стили
@@ -60,42 +57,54 @@ gradleProject/
 ### 1. Требования
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows / macOS / Linux)
-- Любой статический веб-сервер для фронтенда (например, [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) в VS Code)
+- MongoDB Atlas аккаунт (для базы данных)
 
-### 2. Запустить бэкенд
+### 2. Переменные окружения
 
-```bash
-docker compose up -d --build
+Создай `.env` файл в корне проекта:
+
+```env
+MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/skillpath
+JWT_SECRET=your-super-secret-jwt-key-here
+CORS_ORIGIN=http://localhost:3000
 ```
 
-Контейнеры:
-| Имя | Порт | Описание |
-|---|---|---|
-| `skillpath_api` | 4000 | Node.js REST API |
-| `skillpath_mongo` | 27017 | MongoDB 7 |
-| `skillpath_redis` | 6379 | Redis 7 |
+### 3. Запустить приложение
+
+```bash
+docker build -t skillpath .
+docker run -p 3000:3000 --env-file .env skillpath
+```
 
 Проверка:
 ```bash
-curl http://localhost:4000/api/health
+curl http://localhost:3000/api/health
 # {"status":"ok"}
 ```
 
-### 3. Запустить фронтенд
+Открой в браузере: **http://localhost:3000**
 
-Открой `index.html` через Live Server в VS Code (порт 5500) или любой другой HTTP-сервер:
+---
 
-```bash
-npx http-server . -p 5500
-```
+## Деплой на Render
 
-Открой в браузере: **http://localhost:5500**
+1. Создай новый **Web Service** на Render
+2. Подключи GitHub репозиторий
+3. Настройки:
+   - **Runtime**: Docker
+   - **Build Command**: (оставь пустым)
+   - **Start Command**: (оставь пустым)
+4. Добавь environment variables:
+   - `MONGO_URI` (из MongoDB Atlas)
+   - `JWT_SECRET`
+   - `CORS_ORIGIN` (твой домен на Render)
+5. Деплой!
 
 ---
 
 ## API
 
-Base URL: `http://localhost:4000/api`
+Base URL: `http://localhost:3000/api`
 
 ### Auth
 
