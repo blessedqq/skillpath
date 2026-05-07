@@ -34,8 +34,8 @@ app.use(rateLimit({
   message: { error: 'Слишком много запросов. Попробуйте позже.' }
 }));
 
-// Serve static files from the app root
-app.use(express.static(path.join(__dirname, '..')));
+// Serve static files from the repository root
+app.use(express.static(path.join(__dirname, '..', '..')));
 
 // ── Routes ────────────────────────────────────────────────────
 app.use('/api/auth',    authRoutes);
