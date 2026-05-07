@@ -1,6 +1,7 @@
 'use strict';
 require('dotenv').config();
 const express    = require('express');
+const path       = require('path');
 const cors       = require('cors');
 const helmet     = require('helmet');
 const morgan     = require('morgan');
@@ -14,7 +15,7 @@ const courseRoutes  = require('./routes/courses');
 const userRoutes    = require('./routes/users');
 
 const app  = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 // ── Security & utility middleware ─────────────────────────────
 app.use(helmet());
@@ -33,6 +34,9 @@ app.use(rateLimit({
   legacyHeaders: false,
   message: { error: 'Слишком много запросов. Попробуйте позже.' }
 }));
+
+// Serve static files from the root directory
+app.use(express.static(path.join(__dirname, '..', '..')));
 
 // ── Routes ────────────────────────────────────────────────────
 app.use('/api/auth',    authRoutes);
